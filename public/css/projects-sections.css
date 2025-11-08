@@ -1,0 +1,35 @@
+.section-list {
+    max-width: 600px;
+    margin: 0 auto;              /* centra horizontalmente */
+}
+
+.section-list-item {
+    font-weight: 600;            /* negrita para el título */
+    padding: 1rem 1.5rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    /* Color base */
+    color: #343a40;
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    margin-bottom: 0.5rem;
+    border-radius: 0.25rem;
+}
+
+.section-list-item:hover {
+    background-color: #3a6df0;   /* color azul de hover */
+    color: #ffffff;              /* texto blanco al pasar mouse */
+    transform: translateX(4px);
+    text-decoration: none;
+}
+
+.section-list-item:active,
+.section-list-item.active {
+    background-color: #1e3c72;   /* color más oscuro si está activo */
+    color: #ffffff;
+}
+
+@media (max-width: 767px) {
+    .section-list-item {
+        padding: 0.75rem 1rem;
+    }
+}

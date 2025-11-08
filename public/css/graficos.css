@@ -1,0 +1,118 @@
+/**  nuevos estilos  **/
+:root {
+  --card-bg-default: #ffffff;
+  --card-bg-hover: #0c92eb;
+  --card-bg-hover-accent: #f8fc08;
+  --card-text-default: #333333;
+  --card-text-hover: #ffffff;
+}
+
+/* Contenedor principal adaptado para espacio del sidebar */
+.content-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 320px)); /* ✅ Tamaño fijo uniforme */
+  gap: 1.5rem;
+  justify-content: center;
+  align-items: start;
+  width: calc(100% - 250px);
+  margin-left: 250px;
+  padding: 1rem 2rem;
+  box-sizing: border-box;
+  counter-reset: tool-card 0;
+}
+
+/* Cada tarjeta como <dl> */
+dl.card.modern {
+  counter-increment: tool-card 1;
+  background: var(--card-bg-default);
+  border-radius: 1rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+  cursor: pointer;
+  color: var(--card-text-default);
+  position: relative;
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+  width: 320px;   /* ✅ Ancho fijo */
+  height: 320px;  /* ✅ Altura fija */
+  box-sizing: border-box;
+  overflow: hidden; /* Evita desbordes por texto largo */
+}
+
+/* Numeración decorativa */
+dl.card.modern::before {
+  content: counter(tool-card);
+  font-size: 6rem;
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.05);
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  transition: transform 0.3s ease, color 0.3s ease;
+  z-index: 0;
+}
+
+dl.card.modern:hover::before {
+  transform: translate(8px, 8px) scale(1.8);
+  color: rgba(0, 0, 0, 0.1);
+}
+
+dl.card.modern:hover {
+  transform: scale(1.05);
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.18);
+  background: linear-gradient(135deg, var(--card-bg-hover) 0%, var(--card-bg-hover-accent) 100%);
+  color: var(--card-text-hover);
+}
+
+/* Títulos y textos dentro de la tarjeta */
+dl.card.modern dt {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 0.75rem;
+  z-index: 1;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+dl.card.modern dd {
+  font-size: 1rem;
+  color: inherit;
+  margin-bottom: 1.5rem;
+  z-index: 1;
+  flex-grow: 1;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+/* ✅ Efecto de escala en dt y dd al hacer hover */
+dl.card.modern:hover dt,
+dl.card.modern:hover dd {
+  transform: scale(1.15);
+  color: #fff;
+}
+
+/* Botones */
+dl.card.modern .btn {
+  transition: background-color 0.3s ease, color 0.3s ease;
+  z-index: 1;
+}
+
+dl.card.modern:hover .btn {
+  background-color: #ffffff;
+  color: var(--card-bg-hover);
+}
+
+/* Responsive */
+@media (max-width: 767px) {
+  .content-grid {
+    grid-template-columns: 1fr;
+    margin-left: 0;
+    width: 100%;
+  }
+
+  dl.card.modern {
+    width: 100%;
+    height: 280px;
+  }
+}

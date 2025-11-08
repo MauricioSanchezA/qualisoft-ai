@@ -1,0 +1,102 @@
+/**  nuevos estilos  **/
+:root {
+  --card-bg-default: #ffffff;
+  --card-bg-hover: #0c92eb;
+  --card-bg-hover-accent: #3cf109;
+  --card-text-default: #333333;
+  --card-text-hover: #ffffff;
+}
+
+/* Contenedor principal adaptado para espacio del sidebar */
+.content-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 2rem;
+  width: calc(100% - 250px); /* Ajusta 250px según el ancho real de tu sidebar */
+  margin-left: 250px;        /* Asegura que no quede debajo del sidebar */
+  height: calc(100vh - 120px); /* Resta altura de header/footer si los tienes */
+  padding: 1rem 2rem;
+  box-sizing: border-box;
+  counter-reset: tool-card 0;
+}
+
+/* Cada tarjeta como <dl> */
+dl.card.modern {
+  counter-increment: tool-card 1;
+  background: var(--card-bg-default);
+  border-radius: 1rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+  cursor: pointer;
+  color: var(--card-text-default);
+  position: relative;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+/* Numeración decorativa */
+dl.card.modern::before {
+  content: counter(tool-card);
+  font-size: 6rem;
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.05);
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+dl.card.modern:hover::before {
+  transform: translate(8px, 8px) scale(1.8);
+  color: rgba(0, 0, 0, 0.1);
+}
+dl.card.modern:hover {
+  transform: scale(1.05);
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.18);
+  background: linear-gradient(135deg, var(--card-bg-hover) 0%, var(--card-bg-hover-accent) 100%);
+  color: var(--card-text-hover);
+}
+
+/* Títulos y textos dentro de la tarjeta */
+dl.card.modern dt {
+  font-size: 1.75rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+dl.card.modern dd {
+  font-size: 1.2rem;
+  color: inherit;
+  margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+dl.card.modern .btn {
+  transition: background-color 0.3s ease, color 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+
+dl.card.modern:hover .btn {
+  background-color: #ffffff;
+  color: var(--card-bg-hover);
+}
+
+/* Responsive: una columna en móviles */
+@media (max-width: 767px) {
+  .content-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    margin-left: 0;
+    width: 100%;
+    height: auto;
+  }
+}
