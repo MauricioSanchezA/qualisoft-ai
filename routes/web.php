@@ -82,24 +82,27 @@ Route::middleware('auth')->group(function () {
         return view('evaluacion.resultado', compact('codigo', 'respuesta'));
     })->name('code_analysis.resultado');
 
-    // Reportes de análisis
+    // Reportes de análisis de código
     Route::post('/evaluacion/graficos', [CodeAnalysisController::class, 'generarMetricas'])->name('evaluacion.graficos');
-    Route::post('/evaluacion/reporte', [CodeAnalysisController::class, 'generarReporte'])->name('evaluacion.reporte.pdf');
-
+    Route::get('/analisis/reporte', [CodeAnalysisController::class, 'generarReporteAnalisis'])->name('code_analysis.reporte.pdf');
     Route::get('/reporte/{id?}', [CodeAnalysisController::class, 'generarReporte'])->name('code_analysis.reporte.show');
-    Route::get('/evaluacion/reportes', [CodeAnalysisController::class, 'index'])->name('evaluacion.index');
+    Route::get('/evaluacion/reportes', [CodeAnalysisController::class, 'index'])->name('code_analysis.reportes.index');
 
     // Evaluaciones
     Route::resource('evaluations', EvaluationController::class);
     Route::get('/evaluations/reports', [EvaluationController::class, 'reports'])->name('evaluations.reports');
 
     // Reportes individuales de evaluación
-    Route::get('/evaluacion/reporte/pdf/{id}', [EvaluationController::class, 'generarPDF'])->name('evaluacion.reporte.pdf.show');
-    Route::get('/evaluacion/reporte/{id}', [EvaluationController::class, 'show'])->name('evaluacion.reporte.html');
-    Route::get('/evaluacion/reporte', [EvaluationController::class, 'viewById'])->name('evaluacion.reporte.view');
+    Route::get('/evaluacion/reporte/pdf/{id}', [EvaluationController::class, 'generarPDF'])->name('evaluacion.individual.pdf');
+    Route::get('/evaluacion/reporte/{id}', [EvaluationController::class, 'show'])->name('evaluacion.individual.html');
+    Route::get('/evaluacion/reporte', [EvaluationController::class, 'viewById'])->name('evaluacion.individual.view');
 
     // IA y chat
     Route::get('/ai/chat', [ChatController::class, 'index'])->name('ai.chat');
     Route::post('/ai/chat/send', [ChatController::class, 'send'])->name('ai.chat.send');
     Route::post('/ai/analyze', [AIController::class, 'analyze'])->name('ai.analyze');
+
+    // Ruta para abrir/ver el PDF del último análisis generado
+    Route::get('/analisis/reporte/pdf/{id?}', [CodeAnalysisController::class, 'generarReporte'])
+    ->name('code_analysis.reporte.pdf.view');
 });

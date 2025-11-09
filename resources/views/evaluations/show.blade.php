@@ -11,7 +11,7 @@
     </div>
 
     <div class="mb-4 text-center">
-        <a href="{{ route('evaluacion.reporte.pdf', $registro->id) }}" class="btn btn-primary" target="_blank">
+        <a href="{{ route('evaluacion.individual.pdf', $registro->id) }}" class="btn btn-primary" target="_blank">
             📄 Descargar PDF
         </a>
     </div>

@@ -29,7 +29,7 @@
                     <h5>✅ Último análisis generado</h5>
                     <div class="d-flex justify-content-center gap-2 mt-2">
                         {{-- Descargar PDF --}}
-                        <a href="{{ route('evaluacion.reporte.pdf', session('registro_id')) }}" 
+                        <a href="{{ route('code_analysis.reporte.pdf', session('registro_id')) }}" 
                            class="btn btn-danger" target="_blank">
                             <i class="fas fa-file-pdf"></i> Descargar PDF
                         </a>

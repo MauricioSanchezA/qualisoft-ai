@@ -282,7 +282,7 @@ public function graficos()
     }
     }
 
-    public function generarReporte($id = null)
+    public function generarReporteAnalisis($id = null)
 {
     // Si se pasa un ID, busca ese registro; si no, toma el más reciente
     $registro = \App\Models\ProjectMetric::when($id, function ($q) use ($id) {
@@ -311,9 +311,8 @@ public function graficos()
     ];
 
     $pdf = PDF::loadView('evaluacion.reporte', $data)
-        ->setPaper('a4', 'portrait');
-
-    return $pdf->stream('reporte_analisis.pdf');
+              ->setPaper('a4', 'portrait');
+    return $pdf->stream('reporte.pdf');
 
 }
 

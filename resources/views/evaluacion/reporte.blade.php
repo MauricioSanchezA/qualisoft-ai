@@ -155,9 +155,11 @@
     {{-- BOTÓN DESCARGAR PDF (solo visible en vista web) --}}
     @if(isset($registro))
         <div style="text-align: center;" class="no-print">
-            <a href="{{ route('evaluacion.reporte.pdf', $registro->id) }}" class="btn btn-primary" target="_blank">
-                📄 Descargar PDF
+            <a href="{{ route('code_analysis.reporte.pdf.view', session('registro_id')) }}" 
+            class="btn btn-danger" target="_blank">
+                <i class="fas fa-file-pdf"></i> Descargar PDF
             </a>
+
         </div>
     @endif
 
