@@ -9,7 +9,7 @@
 <div class="card mb-4">
 
 </div>
-    <form action="{{ route('evaluacion.reporte') }}" method="GET" class="d-inline-flex align-items-center mb-3">
+    <form action="{{ route('evaluacion.reporte.view') }}" method="GET" class="d-inline-flex align-items-center mb-3">
         <input type="number" name="id" class="form-control me-2" placeholder="Ingrese ID del reporte" required style="width: 160px;">
         <button type="submit" class="btn btn-primary">Ver Reporte</button>
     </form><br>
